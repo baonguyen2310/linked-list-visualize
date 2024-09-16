@@ -1,0 +1,294 @@
+:root {
+  --primary-color: #3498db;
+  --secondary-color: #e74c3c;
+  --highlight-color: #f39c12;
+  --background-color: #ecf0f1;
+  --header-bg-color: #34495e;
+  --text-color: #2c3e50;
+  --node-bg-color: #ffffff;
+  --node-border-color: #bdc3c7;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  background-color: var(--header-bg-color);
+  padding: 10px 20px;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.title {
+  text-align: center;
+  font-size: 2rem;
+  color: var(--primary-color);
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  flex-grow: 1;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 30px;
+  justify-content: center;
+}
+
+.control-group {
+  display: flex;
+  gap: 10px;
+}
+
+.input {
+  padding: 8px 12px;
+  border: 1px solid var(--node-border-color);
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.button {
+  padding: 8px 16px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.button:hover {
+  background-color: #2980b9;
+}
+
+.linked-list-container {
+  position: relative;
+  height: 200px;
+  margin-bottom: 10px;
+  margin-top: 50px;
+}
+
+.node {
+  position: absolute;
+  border: 2px solid var(--node-border-color);
+  background-color: var(--node-bg-color);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  height: 60px;
+}
+
+.node-data, .node-next {
+  padding: 10px;
+  flex: 1;
+  text-align: center;
+}
+
+.node-data {
+  border-right: 1px solid var(--node-border-color);
+}
+
+.node.highlighted {
+  background-color: var(--highlight-color);
+}
+
+.node.new {
+  opacity: 0;
+  animation: fadeIn 0.5s forwards;
+}
+
+.node.removing {
+  opacity: 1;
+  animation: fadeOut 0.5s forwards;
+}
+
+.variable {
+  position: absolute;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 4px;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px;
+}
+
+.variable.highlight {
+  background-color: var(--highlight-color);
+}
+
+.variable.secondary {
+  background-color: var(--secondary-color);
+}
+
+.arrow-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.arrow-line {
+  stroke: var(--text-color);
+}
+
+.arrow-head {
+  fill: var(--text-color);
+}
+
+.arrow-line.highlight, .arrow-head.highlight {
+  stroke: var(--highlight-color);
+  fill: var(--highlight-color);
+}
+
+.arrow-line.secondary, .arrow-head.secondary {
+  stroke: var(--secondary-color);
+  fill: var(--secondary-color);
+}
+
+.result {
+    background-color: var(--node-bg-color);
+    border: 2px solid var(--primary-color);  /* Đường viền đậm hơn */
+    border-radius: 8px;  /* Bo góc nhiều hơn */
+    padding: 15px;  /* Padding lớn hơn */
+    margin-top: 30px;  /* Khoảng cách với phần trên lớn hơn */
+    font-size: 18px;  /* Font size lớn hơn */
+    margin-bottom: 30px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);  /* Thêm bóng đổ */
+    color: var(--text-color);
+    font-weight: bold;  /* Chữ đậm */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 30px;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Responsive styles */
+@media screen and (max-width: 1200px) {
+  .container {
+    padding: 10px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .linked-list-container {
+    height: 250px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+
+  .logo {
+    margin-bottom: 10px;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .controls {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .control-group {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .input, .button {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .linked-list-container {
+    height: 300px;
+    overflow-x: auto;
+    padding-bottom: 20px;
+  }
+
+  .node, .variable {
+    transform: scale(0.8);
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .result {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  .node, .variable {
+    transform: scale(0.7);
+  }
+}
+
+/* Thêm styles cho container của linked list để hỗ trợ scroll */
+.linked-list-scroll-container {
+  width: 100%;
+  overflow-x: auto;
+  padding-bottom: 20px;
+}
+
+/* Điều chỉnh kích thước của linked list container */
+.linked-list-container {
+  min-width: 800px; /* Đảm bảo có đủ không gian cho các node */
+}
